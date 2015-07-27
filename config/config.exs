@@ -22,3 +22,9 @@ use Mix.Config
 # here (which is why it is important to import them last).
 #
 #     import_config "#{Mix.env}.exs"
+
+
+# working urls
+# http://208.65.20.83/axis-cgi/mjpg/video.cgi?resolution=4cif&dummy=1344350498922
+#
+# https://www.google.com/search?q=inurl%3A%22axis-cgi%2Fmjpg%22&btnG=Google&gws_rd=ssl

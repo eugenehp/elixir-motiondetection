@@ -6,14 +6,16 @@
 #include <jerror.h>
 
 #define MAXBUFLEN 1024
-
+#define UNUSED(x) (void)(x)
 #define error(msg) enif_make_tuple2(env,enif_make_atom(env,"error"),enif_make_string(env,msg,ERL_NIF_LATIN1))
 
-static ERL_NIF_TERM _test(ErlNifEnv* env, int arc, const ERL_NIF_TERM argv[])
+static ERL_NIF_TERM _test(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[])
 {
-	char result[MAXBUFLEN];
+	UNUSED(argc);
 
+	char result[MAXBUFLEN];
 	char path[MAXBUFLEN];
+
 	enif_get_string(env, argv[0], path, 1024, ERL_NIF_LATIN1);
 
 	strcpy(result, "Hello World! ");
@@ -23,6 +25,8 @@ static ERL_NIF_TERM _test(ErlNifEnv* env, int arc, const ERL_NIF_TERM argv[])
 }
 
 static ERL_NIF_TERM _load(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]){
+	UNUSED(argc);
+
 	ErlNifBinary in,out;
 	struct jpeg_decompress_struct cinfo;
 	struct jpeg_error_mgr jerr;
@@ -52,7 +56,7 @@ static ERL_NIF_TERM _load(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]){
 
 	rowp[0] = (unsigned char*) malloc(cinfo.output_width*cinfo.num_components);
 	
-	int i = 0;
+	unsigned int i = 0;
 	while (cinfo.output_scanline < cinfo.output_height){
 		jpeg_read_scanlines(&cinfo, rowp, 1);
 		for( i=0; i<cinfo.image_width*cinfo.num_components;i++)
@@ -75,6 +79,8 @@ static ERL_NIF_TERM _load(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]){
 }
 
 static ERL_NIF_TERM _compare(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]){
+	UNUSED(argc);
+
 	ErlNifBinary b1,b2;
 	int pos,minpos,step,min;
 
