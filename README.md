@@ -3,6 +3,8 @@ Motiondetection
 
 Elixir based motion detection application using libjpeg. Comparing pixel differences and provides with a output rate of the changes.
 
+[Video](http://youtu.be/pjpctl-V8_c)
+
 Compile and run
 ==============
 `./run.sh` from your Terminal
