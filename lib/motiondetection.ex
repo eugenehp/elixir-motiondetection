@@ -35,10 +35,11 @@ defmodule Motiondetection do
 		{:ok,{width1,height1,bytes1}} = load image1
 		{:ok,{width2,height2,bytes2}} = load image2
 
-		position 	= width1*height1*3
-		minPosition = 0
-		step 		= 2
-		min 		= 30
+		# use this to parallel the process, and play with the quality and performance
+		position 	= width1*height1*3 # end position for a process
+		minPosition = 0 # start position for a process in a binary list of pixesl {R,G,B}
+		step 		= 2 # check each 2nd pixel
+		min 		= 30 # change between previous and current image should be at least
  
 		result = compare bytes1, bytes2, position, minPosition, step, min
 
