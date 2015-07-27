@@ -11,6 +11,6 @@ defmodule Motiondetection do
 	end
 
 	def _test(inputString) do
-		"NIF library not loaded #{inputString}"
+		"NIF library not loaded. Trying to pass #{inputString}"
 	end
 end
