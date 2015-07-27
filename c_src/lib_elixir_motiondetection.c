@@ -64,11 +64,14 @@ static ERL_NIF_TERM _load(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]){
 	jpeg_finish_decompress (&cinfo);
 	jpeg_destroy_decompress (&cinfo);
 	
-	return	enif_make_tuple2(env,enif_make_atom(env,"ok"),
-			enif_make_tuple3(env,
-			enif_make_int(env,width),
-			enif_make_int(env,height),
-			enif_make_binary(env, &out)));
+	return	enif_make_tuple2(env,
+				enif_make_atom(env,"ok"),
+				enif_make_tuple3(env,
+					enif_make_int(env,width),
+					enif_make_int(env,height),
+					enif_make_binary(env, &out)
+				)
+			);
 }
 
 static ERL_NIF_TERM _compare(ErlNifEnv* env, int argc, const ERL_NIF_TERM argv[]){
