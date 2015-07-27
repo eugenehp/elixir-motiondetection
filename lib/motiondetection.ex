@@ -27,17 +27,30 @@ defmodule Motiondetection do
 	end
 
 	def compare_two_files(images_path, filename1, filename2) do
-		image1 =  File.read "#{images_path}/#{filename1}"
-		image2 =  File.read "#{images_path}/#{filename2}"
+		{:ok,image1} =  File.read "#{images_path}/#{filename1}"
+		{:ok,image2} =  File.read "#{images_path}/#{filename2}"
 
 		IO.puts "Doing compare_two_files with `#{filename1}` and `#{filename2}`"
 
-		case load image1 do
-			{:ok,{width,height,out}} -> 	
-				IO.puts "So image #{width} and #{height}"
-			{:err, message} ->
-				IO.puts "Error #{message}"
-		end
+		{:ok,{width1,height1,bytes1}} = load image1
+		{:ok,{width2,height2,bytes2}} = load image2
+
+		position 	= width1*height1*3
+		minPosition = 0
+		step 		= 2
+		min 		= 30
+ 
+		result = compare bytes1, bytes2, position, minPosition, step, min
+
+		IO.puts "Comparison result is #{result}"
+
+		# case load image1 do
+		# 	{:ok,{width,height,out}} -> 
+		# 		byteSize = width*height*3 #byte_size out
+		# 		IO.puts "So image width=#{width} and height=#{height} and byteSize=#{byteSize}"
+		# 	{:err, message} ->
+		# 		IO.puts "Error #{message}"
+		# end
 	end
 
 	# rest of the routine
