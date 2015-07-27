@@ -1,7 +1,7 @@
 Motiondetection
 ===============
 
-Elixir based motion detection application
+Elixir based motion detection application using libjpeg. Comparing pixel differences and provides with a output rate of the changes.
 
 Compile and run
 ==============
