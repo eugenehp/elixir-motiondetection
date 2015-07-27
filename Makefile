@@ -5,7 +5,7 @@ ifneq ($(OS),Windows_NT)
 	CFLAGS += -fPIC
 
 	ifeq ($(shell uname),Darwin)
-		LDFLAGS += -dynamiclib -undefined dynamic_lookup
+		LDFLAGS += -dynamiclib -undefined dynamic_lookup -ljpeg
 	endif
 endif
 
